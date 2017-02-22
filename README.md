@@ -4,13 +4,15 @@
 InfluxDB Role
 ===================
 
-Install InfluxDB (Only working for Ubuntu 16)
+Install [InfluxDB](https://www.influxdata.com/open-source/).  
+This role has been tested only with Ubuntu 16. Is not ensured that it will work with other systems.
 
 Role Variables
 --------------
 
-The variables that can be passed to this role and a brief description about them are as follows.
+Variables used in this role:
 
+	# Install info
 	influxdb_version: "0.9.5"
 
 Example Playbook
