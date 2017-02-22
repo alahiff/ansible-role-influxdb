@@ -1,0 +1,33 @@
+- name: Download influxdb
+  get_url:
+    url: "http://s3.amazonaws.com/influxdb/influxdb_{{ influxdb_version }}_amd64.deb"
+    dest: "/root/influxdb_{{ influxdb_version }}_amd64.deb"
+    mode: 0440
+
+- name: Install influxdb
+  apt:
+    deb: "/root/influxdb_{{ influxdb_version }}_amd64.deb"
+
+- name: Drop InfluxDB Config(s)
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "0644"
+  with_items:
+    - src: "influxdb.conf.j2"
+      dest: "/etc/influxdb/influxdb.conf"
+      owner: "root"
+      group: "root"
+    - src: "influxdb.j2"
+      dest: "/etc/default/influxdb"
+      owner: "root"
+      group: "root"
+  register: influxdb_config
+
+- name: Restart influxdb
+  service:
+    name: "influxdb"
+    state: "restarted"
+  when: influxdb_config.changed
