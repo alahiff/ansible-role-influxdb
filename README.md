@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Build Status](https://travis-ci.org/grycap/ansible-role-kafka.svg?branch=master)](https://travis-ci.org/grycap/ansible-role-kafka)
+[![Build Status](https://travis-ci.org/grycap/ansible-role-influxdb.svg?branch=master)](https://travis-ci.org/grycap/ansible-role-influxdb)
 
 InfluxDB Role
 ===================
